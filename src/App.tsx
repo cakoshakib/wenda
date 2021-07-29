@@ -1,21 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.global.css';
+import DailyChecklist from './components/DailyChecklist';
 
 const Heading = () => {
   return <h1 id="header">Wenda</h1>;
-};
-
-interface Props {
-  day: string;
-}
-const DailyChecklist = ({ day }: Props) => {
-  return (
-    <div id="day_module">
-      <h2>{day}</h2>
-      <button type="button">New Task</button>
-    </div>
-  );
 };
 
 const Week = () => {
