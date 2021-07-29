@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './DailyChecklist.css';
+import './DailyChecklist.global.css';
 
 const Checkbox = ({ task }: { task: string }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);

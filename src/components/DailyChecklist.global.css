@@ -1,0 +1,51 @@
+input {
+  border-style: hidden;
+  background-color: rgb(54, 54, 54);
+  color: white;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type=checkbox]+label {
+  text-decoration: none;
+}
+
+input[type=checkbox]:checked+label {
+  text-decoration: line-through;
+}
+
+#day_module {
+  font-size: 1.2em;
+  background-color: rgb(31, 31, 31);
+  border-radius: 10px;
+  width: min-content;
+}
+
+#day_module h2 {
+  text-align: center;
+  padding-top: 3%;
+  margin-bottom: 0;
+}
+
+#day_module input {
+  padding: 3px;
+}
+
+#day_module * {
+  padding: 10px;
+}
+
+#day_module label {
+  white-space: pre-wrap;
+  /* CSS3 */
+  white-space: -moz-pre-wrap;
+  /* Firefox */
+  white-space: -pre-wrap;
+  /* Opera <7 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE */
+}
