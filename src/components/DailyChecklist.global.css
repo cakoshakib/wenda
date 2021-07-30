@@ -8,11 +8,11 @@ input:focus {
   outline: none;
 }
 
-input[type=checkbox]+label {
+input[type='checkbox'] + label {
   text-decoration: none;
 }
 
-input[type=checkbox]:checked+label {
+input[type='checkbox']:checked + label {
   text-decoration: line-through;
 }
 
@@ -38,14 +38,5 @@ input[type=checkbox]:checked+label {
 }
 
 #day_module label {
-  white-space: pre-wrap;
-  /* CSS3 */
-  white-space: -moz-pre-wrap;
-  /* Firefox */
-  white-space: -pre-wrap;
-  /* Opera <7 */
-  white-space: -o-pre-wrap;
-  /* Opera 7 */
-  word-wrap: break-word;
-  /* IE */
+  font-size: 15px;
 }

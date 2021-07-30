@@ -1,0 +1,11 @@
+#week_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7%;
+  justify-content: center;
+}
+
+#week_container > * {
+  margin-top: 30px;
+  height: 0%;
+}
