@@ -1,5 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import './DailyChecklist.global.css';
+import { v4 as uuidv4 } from 'uuid';
+import Store from 'electron-store';
+
+const store = new Store();
 
 const Checkbox = ({ task }: { task: string }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -28,28 +33,68 @@ interface Props {
 }
 
 const Tasks = ({ day }: Props) => {
-  const [tasks, addTask] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<string[]>([]);
+  const [editing, setEditing] = useState<boolean>(false);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const savedData = JSON.parse(window.localStorage.getItem(day)) || [];
-    addTask(savedData);
+    const savedData = (store.get(day) as string[]) || [];
+    setTasks(savedData);
   }, []);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleNewTask = (event: any) => {
     event.preventDefault();
     const content = event.target.task.value;
     event.target.task.value = '';
-    addTask([...tasks, content]);
+    let dayArr: string[] = store.get(day) as string[];
+    if (!dayArr) {
+      store.set(day, []);
+      dayArr = store.get(day) as string[];
+    }
+    const updated = dayArr.concat(content);
+    store.set(day, updated);
 
-    window.localStorage.setItem(day, JSON.stringify([...tasks, content]));
+    setTasks([...tasks, content]);
+  };
+  const handleClick = () => {
+    setEditing(!editing);
+  };
+  const handleDelete = (index: number) => {
+    const dayArr: string[] = store.get(day) as string[];
+    dayArr.splice(index, 1);
+    store.set(day, dayArr);
+    setTasks(dayArr);
   };
 
+  if (editing) {
+    return (
+      <div>
+        <button type="submit" onClick={handleClick}>
+          edit
+        </button>
+        {tasks.map((task, index) => (
+          <div key={uuidv4()}>
+            <Checkbox key={uuidv4()} task={task} />
+            <button type="submit" onClick={() => handleDelete(index)}>
+              delete
+            </button>
+          </div>
+        ))}
+        <form onSubmit={handleNewTask}>
+          <input name="task" />
+        </form>
+      </div>
+    );
+  }
   return (
     <div>
+      <button type="submit" onClick={handleClick}>
+        edit
+      </button>
       {tasks.map((task) => (
-        <Checkbox key={task} task={task} />
+        <Checkbox key={uuidv4()} task={task} />
       ))}
       <form onSubmit={handleNewTask}>
         <input name="task" />
