@@ -4,8 +4,7 @@ import './Week.global.css';
 
 const Week = () => {
   const d = new Date();
-  const today = new Date(d.getFullYear(), d.getMonth(), d.getDate());
-  const lastSunday = new Date(today.setDate(today.getDate() - today.getDay()));
+  const lastSunday = new Date(d.setDate(d.getDate() - d.getDay()));
   const weekTitle = `Week of ${new Intl.DateTimeFormat('en-US', {
     month: 'long',
   }).format(lastSunday)} ${lastSunday.getDate()}, ${lastSunday.getFullYear()}`;
