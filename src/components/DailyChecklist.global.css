@@ -40,3 +40,10 @@ input[type='checkbox']:checked + label {
 #day_module label {
   font-size: 15px;
 }
+
+#weekday_date {
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  font-size: 19px;
+}

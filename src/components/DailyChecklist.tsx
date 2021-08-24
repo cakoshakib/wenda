@@ -92,10 +92,30 @@ const Tasks = ({ day }: Props) => {
   );
 };
 
+const days = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
 const DailyChecklist = ({ day }: Props) => {
+  const d = new Date();
+  const lastSunday = new Date(d.setDate(d.getDate() - d.getDay()));
+  const thisDay = new Date(
+    lastSunday.setDate(lastSunday.getDate() + days.indexOf(day))
+  );
+  const dayTitle = `${new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+  }).format(thisDay)}. ${thisDay.getDate()}`;
+
   return (
     <div id="day_module">
       <h2>{day}</h2>
+      <h3 id="weekday_date">{dayTitle}</h3>
       <Tasks day={day} />
     </div>
   );
