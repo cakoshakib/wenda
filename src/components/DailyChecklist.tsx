@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './DailyChecklist.global.css';
 import { v4 as uuidv4 } from 'uuid';
-import Store from 'electron-store';
-
-const store = new Store();
+import noteService from '../services/notes';
 
 const Checkbox = ({ task }: { task: string }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -37,35 +35,26 @@ const Tasks = ({ day }: Props) => {
   const [editing, setEditing] = useState<boolean>(false);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const savedData = (store.get(day) as string[]) || [];
+    const savedData = noteService.getDay(day) || [];
     setTasks(savedData);
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleNewTask = (event: any) => {
+  const handleNewTask = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     const content = event.target.task.value;
     event.target.task.value = '';
-    let dayArr: string[] = store.get(day) as string[];
-    if (!dayArr) {
-      store.set(day, []);
-      dayArr = store.get(day) as string[];
-    }
-    const updated = dayArr.concat(content);
-    store.set(day, updated);
+    noteService.addNote(day, content);
 
-    setTasks([...tasks, content]);
+    setTasks(noteService.getDay(day));
   };
+
   const handleClick = () => {
     setEditing(!editing);
   };
+
   const handleDelete = (index: number) => {
-    const dayArr: string[] = store.get(day) as string[];
-    dayArr.splice(index, 1);
-    store.set(day, dayArr);
-    setTasks(dayArr);
+    noteService.deleteNote(day, index);
+    setTasks(noteService.getDay(day));
   };
 
   if (editing) {
