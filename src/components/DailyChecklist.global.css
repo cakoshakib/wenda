@@ -24,9 +24,8 @@ input[type='checkbox']:checked + label {
 }
 
 #day_module h2 {
-  text-align: center;
-  padding-top: 3%;
-  margin-bottom: 0;
+  margin: 0;
+  display: inline-block;
 }
 
 #day_module input {
@@ -43,7 +42,29 @@ input[type='checkbox']:checked + label {
 
 #weekday_date {
   padding: 0px;
-  margin: 0px;
-  text-align: center;
+  margin-left: 20px;
+  text-align: left;
   font-size: 19px;
+}
+
+#more {
+  margin: 0px;
+  float: right;
+}
+
+#tasks {
+  display: inline-block;
+}
+
+#editing {
+  padding: 0;
+}
+
+#editing form {
+  display: inline-block;
+}
+
+#delete {
+  float: right;
+  margin-top: 15px;
 }

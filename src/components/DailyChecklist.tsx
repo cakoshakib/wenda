@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import './DailyChecklist.global.css';
+import { MdExpandMore, MdExpandLess, MdClose } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
 import noteService from '../services/notes';
 
@@ -28,11 +29,11 @@ const Checkbox = ({ task }: { task: string }) => {
 
 interface Props {
   day: string;
+  editing: boolean;
 }
 
-const Tasks = ({ day }: Props) => {
+const Tasks = ({ day, editing }: Props) => {
   const [tasks, setTasks] = useState<string[]>([]);
-  const [editing, setEditing] = useState<boolean>(false);
 
   useEffect(() => {
     const savedData = noteService.getDay(day) || [];
@@ -48,10 +49,6 @@ const Tasks = ({ day }: Props) => {
     setTasks(noteService.getDay(day));
   };
 
-  const handleClick = () => {
-    setEditing(!editing);
-  };
-
   const handleDelete = (index: number) => {
     noteService.deleteNote(day, index);
     setTasks(noteService.getDay(day));
@@ -59,16 +56,15 @@ const Tasks = ({ day }: Props) => {
 
   if (editing) {
     return (
-      <div>
-        <button type="submit" onClick={handleClick}>
-          edit
-        </button>
+      <div id="tasks">
         {tasks.map((task, index) => (
-          <div key={uuidv4()}>
+          <div key={uuidv4()} id="editing">
             <Checkbox key={uuidv4()} task={task} />
-            <button type="submit" onClick={() => handleDelete(index)}>
-              delete
-            </button>
+            <MdClose
+              size="35"
+              id="delete"
+              onClick={() => handleDelete(index)}
+            />
           </div>
         ))}
         <form onSubmit={handleNewTask}>
@@ -78,12 +74,11 @@ const Tasks = ({ day }: Props) => {
     );
   }
   return (
-    <div>
-      <button type="submit" onClick={handleClick}>
-        edit
-      </button>
+    <div id="tasks">
       {tasks.map((task) => (
-        <Checkbox key={uuidv4()} task={task} />
+        <div key={uuidv4()} id="editing">
+          <Checkbox key={uuidv4()} task={task} />
+        </div>
       ))}
       <form onSubmit={handleNewTask}>
         <input name="task" />
@@ -102,7 +97,13 @@ const days = [
   'Saturday',
 ];
 
-const DailyChecklist = ({ day }: Props) => {
+interface Checklist {
+  day: string;
+}
+
+const DailyChecklist = ({ day }: Checklist) => {
+  const [editing, setEditing] = useState<boolean>(false);
+
   const d = new Date();
   const lastSunday = new Date(d.setDate(d.getDate() - d.getDay()));
   const thisDay = new Date(
@@ -112,11 +113,20 @@ const DailyChecklist = ({ day }: Props) => {
     month: 'short',
   }).format(thisDay)}. ${thisDay.getDate()}`;
 
+  const handleClick = () => {
+    setEditing(!editing);
+  };
+
   return (
     <div id="day_module">
+      {editing ? (
+        <MdExpandLess size="50" id="more" onClick={handleClick} />
+      ) : (
+        <MdExpandMore size="50" id="more" onClick={handleClick} />
+      )}
       <h2>{day}</h2>
       <h3 id="weekday_date">{dayTitle}</h3>
-      <Tasks day={day} />
+      <Tasks day={day} editing={editing} />
     </div>
   );
 };
