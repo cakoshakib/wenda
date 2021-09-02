@@ -38,7 +38,7 @@ const Checkbox = ({ task, index, day }: Checkboxes) => {
         </label>
       ) : (
         <input
-          className="task_text"
+          name="edit_task"
           type="text"
           value={val}
           onChange={(event) => {
@@ -61,16 +61,16 @@ const Checkbox = ({ task, index, day }: Checkboxes) => {
 
 interface Props {
   day: string;
-  editing: boolean;
+  deleting: boolean;
 }
 
-const Tasks = ({ day, editing }: Props) => {
+const Tasks = ({ day, deleting }: Props) => {
   const [tasks, setTasks] = useState<string[]>([]);
 
   useEffect(() => {
     const savedData = noteService.getDay(day) || [];
     setTasks(savedData);
-  }, [editing]);
+  }, [deleting]);
 
   const handleNewTask = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -86,11 +86,11 @@ const Tasks = ({ day, editing }: Props) => {
     setTasks(noteService.getDay(day));
   };
 
-  if (editing) {
+  if (deleting) {
     return (
       <div id="tasks">
         {tasks.map((task, index) => (
-          <div key={uuidv4()} id="editing">
+          <div key={uuidv4()} id="oneTask">
             <Checkbox key={uuidv4()} task={task} index={index} day={day} />
             <MdClose
               size="35"
@@ -108,7 +108,7 @@ const Tasks = ({ day, editing }: Props) => {
   return (
     <div id="tasks">
       {tasks.map((task, index) => (
-        <div key={uuidv4()} id="editing">
+        <div key={uuidv4()} id="oneTask">
           <Checkbox key={uuidv4()} task={task} index={index} day={day} />
         </div>
       ))}
@@ -134,7 +134,7 @@ interface Checklist {
 }
 
 const DailyChecklist = ({ day }: Checklist) => {
-  const [editing, setEditing] = useState<boolean>(false);
+  const [deleting, setDeleting] = useState<boolean>(false);
 
   const d = new Date();
   const lastSunday = new Date(d.setDate(d.getDate() - d.getDay()));
@@ -146,19 +146,19 @@ const DailyChecklist = ({ day }: Checklist) => {
   }).format(thisDay)}. ${thisDay.getDate()}`;
 
   const handleClick = () => {
-    setEditing(!editing);
+    setDeleting(!deleting);
   };
 
   return (
     <div id="day_module">
-      {editing ? (
-        <MdExpandLess size="50" id="more" onClick={handleClick} />
+      {deleting ? (
+        <MdExpandLess size="50" id="expandButton" onClick={handleClick} />
       ) : (
-        <MdExpandMore size="50" id="more" onClick={handleClick} />
+        <MdExpandMore size="50" id="expandButton" onClick={handleClick} />
       )}
       <h2>{day}</h2>
       <h3 id="weekday_date">{dayTitle}</h3>
-      <Tasks day={day} editing={editing} />
+      <Tasks day={day} deleting={deleting} />
     </div>
   );
 };

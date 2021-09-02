@@ -4,6 +4,13 @@ input {
   color: white;
 }
 
+input[name='edit_task'] {
+  height: 90%;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
 input:focus {
   outline: none;
 }
@@ -47,7 +54,7 @@ input[type='checkbox']:checked + label {
   font-size: 19px;
 }
 
-#more {
+#expandButton {
   margin: 0px;
   float: right;
 }
@@ -56,11 +63,12 @@ input[type='checkbox']:checked + label {
   display: inline-block;
 }
 
-#editing {
+#oneTask {
   padding: 0;
+  height: 50px;
 }
 
-#editing form {
+#oneTask form {
   display: inline-block;
 }
 
