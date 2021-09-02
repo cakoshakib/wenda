@@ -5,8 +5,16 @@ import { MdExpandMore, MdExpandLess, MdClose } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
 import noteService from '../services/notes';
 
-const Checkbox = ({ task }: { task: string }) => {
+interface Checkboxes {
+  task: string;
+  index: number;
+  day: string;
+}
+
+const Checkbox = ({ task, index, day }: Checkboxes) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [toggle, setToggle] = useState<boolean>(true);
+  const [val, setVal] = useState<string>(task);
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
@@ -20,9 +28,33 @@ const Checkbox = ({ task }: { task: string }) => {
         checked={isChecked}
         onChange={handleOnChange}
       />
-      <label htmlFor={task} className="task_text">
-        {task}
-      </label>
+      {toggle ? (
+        <label
+          htmlFor={task}
+          className="task_text"
+          onDoubleClick={() => setToggle(false)}
+        >
+          {val}
+        </label>
+      ) : (
+        <input
+          className="task_text"
+          type="text"
+          value={val}
+          onChange={(event) => {
+            const content = event.target.value;
+            noteService.editNote(day, index, content);
+            setVal(content);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === 'Escape') {
+              setToggle(true);
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }}
+        />
+      )}
     </form>
   );
 };
@@ -38,7 +70,7 @@ const Tasks = ({ day, editing }: Props) => {
   useEffect(() => {
     const savedData = noteService.getDay(day) || [];
     setTasks(savedData);
-  }, []);
+  }, [editing]);
 
   const handleNewTask = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -59,7 +91,7 @@ const Tasks = ({ day, editing }: Props) => {
       <div id="tasks">
         {tasks.map((task, index) => (
           <div key={uuidv4()} id="editing">
-            <Checkbox key={uuidv4()} task={task} />
+            <Checkbox key={uuidv4()} task={task} index={index} day={day} />
             <MdClose
               size="35"
               id="delete"
@@ -75,9 +107,9 @@ const Tasks = ({ day, editing }: Props) => {
   }
   return (
     <div id="tasks">
-      {tasks.map((task) => (
+      {tasks.map((task, index) => (
         <div key={uuidv4()} id="editing">
-          <Checkbox key={uuidv4()} task={task} />
+          <Checkbox key={uuidv4()} task={task} index={index} day={day} />
         </div>
       ))}
       <form onSubmit={handleNewTask}>
