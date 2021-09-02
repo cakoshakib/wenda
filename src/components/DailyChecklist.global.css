@@ -4,6 +4,13 @@ input {
   color: white;
 }
 
+input[name='edit_task'] {
+  height: 90%;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
 input:focus {
   outline: none;
 }
@@ -20,13 +27,12 @@ input[type='checkbox']:checked + label {
   font-size: 1.2em;
   background-color: rgb(31, 31, 31);
   border-radius: 10px;
-  width: min-content;
+  width: auto;
 }
 
 #day_module h2 {
-  text-align: center;
-  padding-top: 3%;
-  margin-bottom: 0;
+  margin: 0;
+  display: inline-block;
 }
 
 #day_module input {
@@ -43,7 +49,30 @@ input[type='checkbox']:checked + label {
 
 #weekday_date {
   padding: 0px;
-  margin: 0px;
-  text-align: center;
+  margin-left: 20px;
+  text-align: left;
   font-size: 19px;
+}
+
+#expandButton {
+  margin: 0px;
+  float: right;
+}
+
+#tasks {
+  display: inline-block;
+}
+
+#oneTask {
+  padding: 0;
+  height: 50px;
+}
+
+#oneTask form {
+  display: inline-block;
+}
+
+#delete {
+  float: right;
+  margin-top: 15px;
 }

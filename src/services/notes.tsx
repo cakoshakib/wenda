@@ -22,4 +22,10 @@ const deleteNote = (day: string, index: number) => {
   store.set(day, dayArr);
 };
 
-export default { getDay, addNote, deleteNote };
+const editNote = (day: string, index: number, newNote: string) => {
+  const dayArr = store.get(day) as string[];
+  dayArr[index] = newNote;
+  store.set(day, dayArr);
+};
+
+export default { getDay, addNote, deleteNote, editNote };
