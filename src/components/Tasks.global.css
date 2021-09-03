@@ -7,7 +7,7 @@ input {
 input[name='edit_task'] {
   height: 90%;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 19px;
   margin-left: 5px;
 }
 
@@ -44,7 +44,9 @@ input[type='checkbox']:checked + label {
 }
 
 #day_module label {
-  font-size: 15px;
+  font-size: 18px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 #tasks {
@@ -53,14 +55,15 @@ input[type='checkbox']:checked + label {
 
 #oneTask {
   padding: 0;
-  height: 50px;
+  height: 35px;
 }
 
 #oneTask form {
   display: inline-block;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 #delete {
   float: right;
-  margin-top: 15px;
 }
