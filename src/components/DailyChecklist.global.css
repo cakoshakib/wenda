@@ -9,3 +9,18 @@
   margin: 0px;
   float: right;
 }
+
+#archive_button {
+  padding: 0px;
+  text-align: center;
+  font-size: 19px;
+}
+
+#archive_button button {
+  border-radius: 20px;
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  font-size: 15px;
+  padding: 0% 0.5%;
+}
