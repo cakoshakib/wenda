@@ -1,6 +1,6 @@
 import Store from 'electron-store';
 
-const store = new Store();
+const store = new Store({ name: 'current-tasks' });
 
 const getDay = (day: string) => {
   return store.get(day) as string[];
@@ -28,4 +28,10 @@ const editNote = (day: string, index: number, newNote: string) => {
   store.set(day, dayArr);
 };
 
-export default { getDay, addNote, deleteNote, editNote };
+const archiveNotes = (week: string) => {
+  const archiveStore = new Store({ name: week });
+  archiveStore.store = store.store;
+  store.store = {};
+};
+
+export default { getDay, addNote, deleteNote, editNote, archiveNotes };

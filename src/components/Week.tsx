@@ -1,5 +1,6 @@
 import React from 'react';
 import DailyChecklist from './DailyChecklist';
+import ArchiveButton from './Archive';
 import './Week.global.css';
 
 const Week = () => {
@@ -12,6 +13,7 @@ const Week = () => {
   return (
     <div>
       <h1 id="week_title">{weekTitle}</h1>
+      <ArchiveButton weekTitle={weekTitle} />
       <div id="days_container">
         <DailyChecklist day="Monday" />
         <DailyChecklist day="Tuesday" />
