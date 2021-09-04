@@ -29,7 +29,7 @@ const editNote = (day: string, index: number, newNote: string) => {
 };
 
 const archiveNotes = (week: string) => {
-  const archiveStore = new Store({ name: week });
+  const archiveStore = new Store({ name: week, cwd: 'archive' });
   archiveStore.store = store.store;
   store.store = {};
 };
