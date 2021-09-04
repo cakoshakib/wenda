@@ -13,11 +13,11 @@ const Week = () => {
 
   const handleArchive = () => {
     noteService.archiveNotes(weekTitle);
-    setReload(true);
+    setFakeReload(true);
   };
 
   if (fakeReload) {
-    setTimeout(() => setReload(false), 100);
+    setTimeout(() => setFakeReload(false), 100);
     return (
       <div>
         <h1 id="week_title">{weekTitle}</h1>
