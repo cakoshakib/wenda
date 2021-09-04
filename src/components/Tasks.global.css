@@ -1,0 +1,70 @@
+input {
+  border-style: hidden;
+  background-color: rgb(54, 54, 54);
+  color: white;
+}
+
+input[name='edit_task'] {
+  height: 90%;
+  border-radius: 5px;
+  font-size: 19px;
+  margin-left: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type='checkbox'] + label {
+  text-decoration: none;
+}
+
+input[type='checkbox']:checked + label {
+  text-decoration: line-through;
+  color: gray;
+}
+
+#day_module {
+  font-size: 1.2em;
+  background-color: rgb(31, 31, 31);
+  border-radius: 10px;
+  width: auto;
+}
+
+#day_module h2 {
+  margin: 0;
+  display: inline-block;
+}
+
+#day_module input {
+  padding: 3px;
+}
+
+#day_module * {
+  padding: 10px;
+}
+
+#day_module label {
+  font-size: 18px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#tasks {
+  display: inline-block;
+}
+
+#oneTask {
+  padding: 0;
+  height: 35px;
+}
+
+#oneTask form {
+  display: inline-block;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#delete {
+  float: right;
+}
