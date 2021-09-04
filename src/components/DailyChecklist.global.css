@@ -1,9 +1,13 @@
-#weekday_date {
-  padding: 0;
+#date_num {
+  font-size: 15px;
+  color: gray;
+  padding-top: 0;
+}
+
+#day_header {
+  display: block;
   margin-bottom: 0;
-  margin-left: 20px;
-  text-align: left;
-  font-size: 19px;
+  border-bottom: 1px solid rgb(99, 99, 99);
 }
 
 #expandButton {
@@ -19,9 +23,9 @@
 
 #archive_button button {
   border-radius: 20px;
-  background-color: black;
-  border: 2px solid white;
-  color: white;
-  font-size: 15px;
+  background-color: rgba(128, 128, 128, 0.082);
+  border: 2px solid rgba(255, 255, 255, 0.253);
+  color: rgb(211, 211, 211);
+  font-size: 13px;
   padding: 0% 0.5%;
 }
