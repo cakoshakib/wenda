@@ -9,7 +9,7 @@ const Week = () => {
   const weekTitle = `Week of ${new Intl.DateTimeFormat('en-US', {
     month: 'long',
   }).format(lastSunday)} ${lastSunday.getDate()}, ${lastSunday.getFullYear()}`;
-  const [fakeReload, setReload] = useState<boolean>(false);
+  const [fakeReload, setFakeReload] = useState<boolean>(false);
 
   const handleArchive = () => {
     noteService.archiveNotes(weekTitle);
