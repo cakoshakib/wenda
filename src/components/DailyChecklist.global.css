@@ -15,6 +15,10 @@
   float: right;
 }
 
+#expandButton:hover {
+  cursor: pointer;
+}
+
 #archive_button {
   padding: 0px;
   text-align: center;
@@ -28,4 +32,8 @@
   color: rgb(211, 211, 211);
   font-size: 13px;
   padding: 0% 0.5%;
+}
+
+#archive_button button:hover {
+  cursor: pointer;
 }
