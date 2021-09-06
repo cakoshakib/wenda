@@ -15,7 +15,8 @@ const Tasks = ({ day, deleting }: TaskList) => {
 
   useEffect(() => {
     const savedData = noteService.getDay(day) || [];
-    setTasks(savedData);
+    const contents: string[] = savedData.map((x) => x.content);
+    setTasks(contents);
   }, [day, deleting]);
 
   const handleNewTask = (event: React.ChangeEvent<HTMLFormElement>) => {
@@ -24,12 +25,12 @@ const Tasks = ({ day, deleting }: TaskList) => {
     event.target.task.value = '';
     noteService.addNote(day, content);
 
-    setTasks(noteService.getDay(day));
+    setTasks(noteService.getDay(day).map((x) => x.content));
   };
 
   const handleDelete = (index: number) => {
     noteService.deleteNote(day, index);
-    setTasks(noteService.getDay(day));
+    setTasks(noteService.getDay(day).map((x) => x.content));
   };
 
   if (deleting) {

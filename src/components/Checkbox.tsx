@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import noteService from '../services/notes';
 
 interface Checkboxes {
@@ -12,7 +12,14 @@ const Checkbox = ({ task, index, day }: Checkboxes) => {
   const [toggle, setToggle] = useState<boolean>(true);
   const [val, setVal] = useState<string>(task);
 
+  useEffect(() => {
+    const savedData = noteService.getDay(day) || [];
+    const state = savedData[index].checked;
+    setIsChecked(state);
+  }, [day, index]);
+
   const handleOnChange = () => {
+    noteService.toggleChecked(day, index);
     setIsChecked(!isChecked);
   };
 

@@ -1,6 +1,8 @@
 input {
   border-style: hidden;
-  background-color: rgb(54, 54, 54);
+  text-indent: 4px;
+  border-radius: 10px;
+  background-color: rgba(199, 199, 199, 0.062);
   color: white;
 }
 
@@ -26,9 +28,13 @@ input[type='checkbox']:checked + label {
 
 #day_module {
   font-size: 1.2em;
-  background-color: rgb(31, 31, 31);
   border-radius: 10px;
   width: auto;
+}
+
+.task_text:hover {
+  font-weight: bolder;
+  cursor: pointer;
 }
 
 #day_module h2 {
@@ -67,4 +73,8 @@ input[type='checkbox']:checked + label {
 
 #delete {
   float: right;
+}
+
+#delete:hover {
+  cursor: pointer;
 }

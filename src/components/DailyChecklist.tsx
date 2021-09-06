@@ -41,8 +41,10 @@ const DailyChecklist = ({ day }: Checklist) => {
       ) : (
         <MdExpandMore size="50" id="expandButton" onClick={handleClick} />
       )}
-      <h2>{day}</h2>
-      <h3 id="weekday_date">{dayTitle}</h3>
+      <h3 id="day_header">
+        {day}
+        <span id="date_num">{thisDay.getDate()}</span>
+      </h3>
       <Tasks day={day} deleting={deleting} />
     </div>
   );
