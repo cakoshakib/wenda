@@ -13,6 +13,10 @@ input[name='edit_task'] {
   margin-left: 5px;
 }
 
+input[name='task'] {
+  width: 100%;
+}
+
 input:focus {
   outline: none;
 }
@@ -21,7 +25,7 @@ input[type='checkbox'] + label {
   text-decoration: none;
 }
 
-input[type='checkbox']:checked + label {
+input[type='checkbox']:checked ~ label {
   text-decoration: line-through;
   color: gray;
 }
@@ -29,7 +33,7 @@ input[type='checkbox']:checked + label {
 #day_module {
   font-size: 1.2em;
   border-radius: 10px;
-  width: auto;
+  max-width: 18em;
 }
 
 .task_text:hover {
@@ -62,13 +66,42 @@ input[type='checkbox']:checked + label {
 
 #oneTask {
   padding: 0;
-  height: 35px;
+  height: auto;
 }
 
 #oneTask form {
   display: inline-block;
+  width: 100%;
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+#oneTask form input[type='checkbox'] {
+  float: left;
+}
+
+#oneTask form label {
+  overflow-wrap: anywhere;
+  overflow: hidden;
+  vertical-align: middle;
+  padding-right: 0;
+}
+
+#oneTask td {
+  vertical-align: middle;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#deleteTd {
+  text-align: right;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#taskTd {
+  padding: 0;
+  width: 100%;
 }
 
 #delete {

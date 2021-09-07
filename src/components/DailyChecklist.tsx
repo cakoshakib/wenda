@@ -26,9 +26,6 @@ const DailyChecklist = ({ day }: Checklist) => {
   const thisDay = new Date(
     lastSunday.setDate(lastSunday.getDate() + days.indexOf(day))
   );
-  const dayTitle = `${new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-  }).format(thisDay)}. ${thisDay.getDate()}`;
 
   const handleClick = () => {
     setDeleting(!deleting);
