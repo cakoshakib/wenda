@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import noteService from '../services/notes';
+import styles from '../styles/Checkbox.css';
 
 interface Checkboxes {
   task: string;
@@ -24,7 +25,7 @@ const Checkbox = ({ task, index, day }: Checkboxes) => {
   };
 
   return (
-    <form className="task_item">
+    <form>
       <input
         id={task}
         type="checkbox"
@@ -34,14 +35,14 @@ const Checkbox = ({ task, index, day }: Checkboxes) => {
       {toggle ? (
         <label
           htmlFor={task}
-          className="task_text"
+          id={styles.task_text}
           onDoubleClick={() => setToggle(false)}
         >
           {val}
         </label>
       ) : (
         <input
-          name="edit_task"
+          name={styles.edit_task}
           type="text"
           value={val}
           onChange={(event) => {

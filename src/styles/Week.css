@@ -1,22 +1,18 @@
-#date_num {
-  font-size: 15px;
-  color: gray;
-  padding-top: 0;
+#days_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7%;
+  justify-content: center;
 }
 
-#day_header {
-  display: block;
-  margin-bottom: 0;
-  border-bottom: 1px solid rgb(99, 99, 99);
+#days_container > * {
+  margin-top: 30px;
+  height: 0%;
 }
 
-#expandButton {
-  margin: 0px;
-  float: right;
-}
-
-#expandButton:hover {
-  cursor: pointer;
+#week_title {
+  text-align: center;
+  font-size: 1em;
 }
 
 #archive_button {

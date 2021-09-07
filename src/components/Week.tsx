@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DailyChecklist from './DailyChecklist';
-import './Week.global.css';
+import styles from '../styles/Week.css';
 import noteService from '../services/notes';
 
 const Week = () => {
@@ -20,8 +20,8 @@ const Week = () => {
     setTimeout(() => setFakeReload(false), 100);
     return (
       <div>
-        <h1 id="week_title">{weekTitle}</h1>
-        <div id="archive_button">
+        <h1 id={styles.week_title}>{weekTitle}</h1>
+        <div id={styles.archive_button}>
           <button type="button" onClick={handleArchive}>
             Archive
           </button>
@@ -32,13 +32,13 @@ const Week = () => {
 
   return (
     <div>
-      <h1 id="week_title">{weekTitle}</h1>
-      <div id="archive_button">
+      <h1 id={styles.week_title}>{weekTitle}</h1>
+      <div id={styles.archive_button}>
         <button type="button" onClick={handleArchive}>
           Archive
         </button>
       </div>
-      <div id="days_container">
+      <div id={styles.days_container}>
         <DailyChecklist day="Monday" />
         <DailyChecklist day="Tuesday" />
         <DailyChecklist day="Wednesday" />
