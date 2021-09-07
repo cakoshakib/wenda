@@ -9,3 +9,18 @@
   font-weight: bolder;
   cursor: pointer;
 }
+
+#deleteTd {
+  text-align: right;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#deleteTd:hover {
+  cursor: pointer;
+}
+
+#taskTd {
+  padding: 0;
+  width: 100%;
+}

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { MdClose } from 'react-icons/md';
+import Checkbox from './Checkbox';
 import styles from '../styles/Tasks.css';
 import noteService from '../services/notes';
-import Checkbox from './Checkbox';
 
 interface TaskList {
   day: string;
@@ -38,11 +37,13 @@ const Tasks = ({ day, deleting }: TaskList) => {
       <div id={styles.tasks}>
         {tasks.map((task, index) => (
           <div key={uuidv4()} id={styles.oneTask}>
-            <Checkbox key={uuidv4()} task={task} index={index} day={day} />
-            <MdClose
-              size="35"
-              id={styles.delete}
-              onClick={() => handleDelete(index)}
+            <Checkbox
+              key={uuidv4()}
+              task={task}
+              index={index}
+              day={day}
+              d
+              handleDelete={handleDelete}
             />
           </div>
         ))}
@@ -56,7 +57,14 @@ const Tasks = ({ day, deleting }: TaskList) => {
     <div id={styles.tasks}>
       {tasks.map((task, index) => (
         <div key={uuidv4()} id={styles.oneTask}>
-          <Checkbox key={uuidv4()} task={task} index={index} day={day} />
+          <Checkbox
+            key={uuidv4()}
+            task={task}
+            index={index}
+            day={day}
+            d={false}
+            handleDelete={handleDelete}
+          />
         </div>
       ))}
       <form onSubmit={handleNewTask}>

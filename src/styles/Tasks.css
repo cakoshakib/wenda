@@ -6,6 +6,10 @@
   color: white;
 }
 
+:global input[name='task'] {
+  width: 100%;
+}
+
 :global input:focus {
   outline: none;
 }
@@ -14,7 +18,7 @@
   text-decoration: none;
 }
 
-:global input[type='checkbox']:checked + label {
+:global input[type='checkbox']:checked ~ label {
   text-decoration: line-through;
   color: gray;
 }
@@ -25,13 +29,31 @@
 
 #oneTask {
   padding: 0;
-  height: 35px;
+  height: auto;
 }
 
 #oneTask form {
   display: inline-block;
+  width: 100%;
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+#oneTask form input[type='checkbox'] {
+  float: left;
+}
+
+#oneTask form label {
+  overflow-wrap: anywhere;
+  overflow: hidden;
+  vertical-align: middle;
+  padding-right: 0;
+}
+
+#oneTask td {
+  vertical-align: middle;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 #delete {

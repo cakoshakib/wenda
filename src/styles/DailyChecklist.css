@@ -22,8 +22,9 @@
 #day_module {
   font-size: 1.2em;
   border-radius: 10px;
-  width: auto;
+  max-width: 18em;
 }
+
 #day_module h2 {
   margin: 0;
   display: inline-block;
