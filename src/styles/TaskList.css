@@ -14,15 +14,6 @@
   outline: none;
 }
 
-:global input[type='checkbox'] + label {
-  text-decoration: none;
-}
-
-:global input[type='checkbox']:checked ~ label {
-  text-decoration: line-through;
-  color: gray;
-}
-
 #tasks {
   display: inline-block;
 }

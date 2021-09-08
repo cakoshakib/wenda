@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 import styles from '../styles/DailyChecklist.css';
-import Tasks from './Tasks';
+import Tasks from './TaskList';
 
 const days = [
   'Sunday',

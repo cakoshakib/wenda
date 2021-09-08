@@ -5,11 +5,6 @@
   justify-content: center;
 }
 
-#days_container > * {
-  margin-top: 30px;
-  height: 0%;
-}
-
 #week_title {
   text-align: center;
   font-size: 1em;

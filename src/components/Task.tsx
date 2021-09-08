@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import noteService from '../services/notes';
-import styles from '../styles/Checkbox.css';
+import styles from '../styles/Task.css';
 
-interface Checkboxes {
+interface TaskProps {
   task: string;
   index: number;
   day: string;
@@ -11,7 +11,7 @@ interface Checkboxes {
   handleDelete: (a: number) => void;
 }
 
-const Checkbox = ({ task, index, day, d, handleDelete }: Checkboxes) => {
+const Task = ({ task, index, day, d, handleDelete }: TaskProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [toggle, setToggle] = useState<boolean>(true);
   const [val, setVal] = useState<string>(task);
@@ -93,7 +93,7 @@ const Checkbox = ({ task, index, day, d, handleDelete }: Checkboxes) => {
           <td id={styles.deleteTd} style={dStyle}>
             <MdClose
               size="35"
-              id="delete"
+              id={styles.deleteButton}
               onClick={() => handleDelete(index)}
             />
           </td>
@@ -103,4 +103,4 @@ const Checkbox = ({ task, index, day, d, handleDelete }: Checkboxes) => {
   );
 };
 
-export default Checkbox;
+export default Task;

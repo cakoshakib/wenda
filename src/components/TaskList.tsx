@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import Checkbox from './Checkbox';
-import styles from '../styles/Tasks.css';
+import Task from './Task';
+import styles from '../styles/TaskList.css';
 import noteService from '../services/notes';
 
 interface TaskList {
@@ -37,7 +37,7 @@ const Tasks = ({ day, deleting }: TaskList) => {
       <div id={styles.tasks}>
         {tasks.map((task, index) => (
           <div key={uuidv4()} id={styles.oneTask}>
-            <Checkbox
+            <Task
               key={uuidv4()}
               task={task}
               index={index}
@@ -53,11 +53,12 @@ const Tasks = ({ day, deleting }: TaskList) => {
       </div>
     );
   }
+
   return (
     <div id={styles.tasks}>
       {tasks.map((task, index) => (
         <div key={uuidv4()} id={styles.oneTask}>
-          <Checkbox
+          <Task
             key={uuidv4()}
             task={task}
             index={index}
