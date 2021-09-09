@@ -1,0 +1,45 @@
+#dateNum {
+  font-size: 15px;
+  color: gray;
+  padding-top: 0;
+}
+
+#dayHeader {
+  display: block;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgb(99, 99, 99);
+}
+
+#expandButton {
+  margin: 0px;
+  float: right;
+}
+
+#expandButton:hover {
+  cursor: pointer;
+}
+
+#dayModule {
+  font-size: 1.2em;
+  border-radius: 10px;
+  max-width: 18em;
+}
+
+#dayModule h2 {
+  margin: 0;
+  display: inline-block;
+}
+
+#dayModule input {
+  padding: 3px;
+}
+
+#dayModule * {
+  padding: 10px;
+}
+
+#dayModule label {
+  font-size: 18px;
+  padding-top: 0;
+  padding-bottom: 0;
+}

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react';
-import './DailyChecklist.global.css';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
-import Tasks from './Tasks';
+import styles from '../styles/DailyChecklist.css';
+import Tasks from './TaskList';
 
 const days = [
   'Sunday',
@@ -26,24 +26,29 @@ const DailyChecklist = ({ day }: Checklist) => {
   const thisDay = new Date(
     lastSunday.setDate(lastSunday.getDate() + days.indexOf(day))
   );
-  const dayTitle = `${new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-  }).format(thisDay)}. ${thisDay.getDate()}`;
 
   const handleClick = () => {
     setDeleting(!deleting);
   };
 
   return (
-    <div id="day_module">
+    <div id={styles.dayModule}>
       {deleting ? (
-        <MdExpandLess size="50" id="expandButton" onClick={handleClick} />
+        <MdExpandLess
+          size="50"
+          id={styles.expandButton}
+          onClick={handleClick}
+        />
       ) : (
-        <MdExpandMore size="50" id="expandButton" onClick={handleClick} />
+        <MdExpandMore
+          size="50"
+          id={styles.expandButton}
+          onClick={handleClick}
+        />
       )}
-      <h3 id="day_header">
+      <h3 id={styles.dayHeader}>
         {day}
-        <span id="date_num">{thisDay.getDate()}</span>
+        <span id={styles.dateNum}>{thisDay.getDate()}</span>
       </h3>
       <Tasks day={day} deleting={deleting} />
     </div>
