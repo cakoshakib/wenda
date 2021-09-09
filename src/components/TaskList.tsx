@@ -32,28 +32,6 @@ const Tasks = ({ day, deleting }: TaskList) => {
     setTasks(noteService.getDay(day).map((x) => x.content));
   };
 
-  if (deleting) {
-    return (
-      <div id={styles.tasks}>
-        {tasks.map((task, index) => (
-          <div key={uuidv4()} id={styles.oneTask}>
-            <Task
-              key={uuidv4()}
-              task={task}
-              index={index}
-              day={day}
-              d
-              handleDelete={handleDelete}
-            />
-          </div>
-        ))}
-        <form onSubmit={handleNewTask}>
-          <input name="task" />
-        </form>
-      </div>
-    );
-  }
-
   return (
     <div id={styles.tasks}>
       {tasks.map((task, index) => (
@@ -63,7 +41,7 @@ const Tasks = ({ day, deleting }: TaskList) => {
             task={task}
             index={index}
             day={day}
-            d={false}
+            d={deleting}
             handleDelete={handleDelete}
           />
         </div>

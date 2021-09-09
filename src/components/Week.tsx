@@ -20,8 +20,8 @@ const Week = () => {
     setTimeout(() => setFakeReload(false), 100);
     return (
       <div>
-        <h1 id={styles.week_title}>{weekTitle}</h1>
-        <div id={styles.archive_button}>
+        <h1 id={styles.weekTitle}>{weekTitle}</h1>
+        <div id={styles.archiveButton}>
           <button type="button" onClick={handleArchive}>
             Archive
           </button>
@@ -32,13 +32,13 @@ const Week = () => {
 
   return (
     <div>
-      <h1 id={styles.week_title}>{weekTitle}</h1>
-      <div id={styles.archive_button}>
+      <h1 id={styles.weekTitle}>{weekTitle}</h1>
+      <div id={styles.archiveButton}>
         <button type="button" onClick={handleArchive}>
           Archive
         </button>
       </div>
-      <div id={styles.days_container}>
+      <div id={styles.daysContainer}>
         <DailyChecklist day="Monday" />
         <DailyChecklist day="Tuesday" />
         <DailyChecklist day="Wednesday" />

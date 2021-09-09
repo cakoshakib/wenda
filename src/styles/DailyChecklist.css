@@ -1,10 +1,10 @@
-#date_num {
+#dateNum {
   font-size: 15px;
   color: gray;
   padding-top: 0;
 }
 
-#day_header {
+#dayHeader {
   display: block;
   margin-bottom: 0;
   border-bottom: 1px solid rgb(99, 99, 99);
@@ -19,26 +19,26 @@
   cursor: pointer;
 }
 
-#day_module {
+#dayModule {
   font-size: 1.2em;
   border-radius: 10px;
   max-width: 18em;
 }
 
-#day_module h2 {
+#dayModule h2 {
   margin: 0;
   display: inline-block;
 }
 
-#day_module input {
+#dayModule input {
   padding: 3px;
 }
 
-#day_module * {
+#dayModule * {
   padding: 10px;
 }
 
-#day_module label {
+#dayModule label {
   font-size: 18px;
   padding-top: 0;
   padding-bottom: 0;

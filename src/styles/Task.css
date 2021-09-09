@@ -1,11 +1,11 @@
-#edit_task {
+#editTask {
   height: 90%;
   border-radius: 5px;
   font-size: 19px;
   margin-left: 5px;
 }
 
-#task_text:hover {
+#taskText:hover {
   font-weight: bolder;
   cursor: pointer;
 }

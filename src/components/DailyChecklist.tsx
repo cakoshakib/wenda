@@ -32,7 +32,7 @@ const DailyChecklist = ({ day }: Checklist) => {
   };
 
   return (
-    <div id={styles.day_module}>
+    <div id={styles.dayModule}>
       {deleting ? (
         <MdExpandLess
           size="50"
@@ -46,9 +46,9 @@ const DailyChecklist = ({ day }: Checklist) => {
           onClick={handleClick}
         />
       )}
-      <h3 id={styles.day_header}>
+      <h3 id={styles.dayHeader}>
         {day}
-        <span id={styles.date_num}>{thisDay.getDate()}</span>
+        <span id={styles.dateNum}>{thisDay.getDate()}</span>
       </h3>
       <Tasks day={day} deleting={deleting} />
     </div>

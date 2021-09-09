@@ -1,22 +1,22 @@
-#days_container {
+#daysContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 7%;
   justify-content: center;
 }
 
-#week_title {
+#weekTitle {
   text-align: center;
   font-size: 1em;
 }
 
-#archive_button {
+#archiveButton {
   padding: 0px;
   text-align: center;
   font-size: 19px;
 }
 
-#archive_button button {
+#archiveButton button {
   border-radius: 20px;
   background-color: rgba(128, 128, 128, 0.082);
   border: 2px solid rgba(255, 255, 255, 0.253);
@@ -25,6 +25,6 @@
   padding: 0% 0.5%;
 }
 
-#archive_button button:hover {
+#archiveButton button:hover {
   cursor: pointer;
 }
