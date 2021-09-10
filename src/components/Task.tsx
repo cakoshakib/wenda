@@ -1,5 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
 import { MdClose } from 'react-icons/md';
+import { Draggable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
 import noteService from '../services/notes';
 import styles from '../styles/Task.css';
 
@@ -112,33 +115,44 @@ const Task = ({ task, index, day, d, handleDelete }: TaskProps) => {
     strikeThrough.textDecoration = 'none';
     strikeThrough.color = 'white';
   }
+  const Container = styled.div``;
 
   return (
-    <form className="task_item">
-      <table>
-        <tr>
-          <td id="checkboxTd">
-            <input
-              id={task}
-              type="checkbox"
-              checked={isChecked}
-              onChange={handleOnChange}
-            />
-          </td>
-          <TaskInfo
-            strikeThrough={strikeThrough}
-            task={task}
-            day={day}
-            index={index}
-          />
-          <DeleteButton
-            handleDelete={handleDelete}
-            index={index}
-            dStyle={dStyle}
-          />
-        </tr>
-      </table>
-    </form>
+    <Draggable draggableId={task} index={index}>
+      {(provided) => (
+        <Container
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+        >
+          <form className="task_item">
+            <table>
+              <tr>
+                <td id="checkboxTd">
+                  <input
+                    id={task}
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={handleOnChange}
+                  />
+                </td>
+                <TaskInfo
+                  strikeThrough={strikeThrough}
+                  task={task}
+                  day={day}
+                  index={index}
+                />
+                <DeleteButton
+                  handleDelete={handleDelete}
+                  index={index}
+                  dStyle={dStyle}
+                />
+              </tr>
+            </table>
+          </form>
+        </Container>
+      )}
+    </Draggable>
   );
 };
 

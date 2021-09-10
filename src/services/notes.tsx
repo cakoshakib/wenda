@@ -13,8 +13,16 @@ const addNote = (day: string, content: string) => {
     store.set(day, []);
     current = store.get(day) as Note[];
   }
-  const updated = current.concat({ content, checked: false });
+  const updated = current.concat({
+    content,
+    checked: false,
+    index: current.length,
+  });
   store.set(day, updated);
+};
+
+const changeOrder = (day: string, newOrder: Note[]) => {
+  store.set(day, newOrder);
 };
 
 const deleteNote = (day: string, index: number) => {
@@ -48,4 +56,5 @@ export default {
   editNote,
   archiveNotes,
   toggleChecked,
+  changeOrder,
 };
