@@ -1,7 +1,17 @@
 import Store from 'electron-store';
 import { Note } from '../types';
 
-const store = new Store({ name: 'current-tasks' });
+const d = new Date();
+const lastSunday = new Date(d.setDate(d.getDate() - d.getDay()));
+const weekTitle = `Week of ${new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+}).format(lastSunday)} ${lastSunday.getDate()}, ${lastSunday.getFullYear()}`;
+
+let store = new Store({ name: weekTitle, cwd: 'weeks' });
+
+const setWeek = (week: string) => {
+  store = new Store({ name: week, cwd: 'weeks' });
+};
 
 const getDay = (day: string) => {
   return store.get(day) as Note[];
@@ -30,7 +40,7 @@ const editNote = (day: string, index: number, newNote: string) => {
 };
 
 const archiveNotes = (week: string) => {
-  const archiveStore = new Store({ name: week, cwd: 'archive' });
+  const archiveStore = new Store({ name: week, cwd: 'weeks' });
   archiveStore.store = store.store;
   store.store = {};
 };
@@ -48,4 +58,5 @@ export default {
   editNote,
   archiveNotes,
   toggleChecked,
+  setWeek,
 };

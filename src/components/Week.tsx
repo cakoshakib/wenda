@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DailyChecklist from './DailyChecklist';
 import styles from '../styles/Week.css';
 import noteService from '../services/notes';
@@ -15,6 +15,10 @@ const Week = () => {
     noteService.archiveNotes(weekTitle);
     setFakeReload(true);
   };
+
+  useEffect(() => {
+    noteService.setWeek(weekTitle);
+  }, [weekTitle]);
 
   if (fakeReload) {
     setTimeout(() => setFakeReload(false), 100);
