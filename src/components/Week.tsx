@@ -47,7 +47,10 @@ const Week = () => {
           role="button"
           onClick={() => handleUpdateWeek(-1)}
           tabIndex={0}
-          onKeyDown={() => handleUpdateWeek(-1)}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'Enter')
+              handleUpdateWeek(-1);
+          }}
           className={styles.arrowButtons}
         >
           ←
@@ -57,14 +60,23 @@ const Week = () => {
           role="button"
           onClick={() => handleUpdateWeek(1)}
           tabIndex={0}
-          onKeyDown={() => handleUpdateWeek(1)}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Enter')
+              handleUpdateWeek(1);
+          }}
           className={styles.arrowButtons}
         >
           →
         </span>
       </div>
       <div id={styles.archiveButton}>
-        <button type="button" onClick={handleReset}>
+        <button
+          type="button"
+          onClick={handleReset}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowDown' || e.key === 'Enter') handleReset();
+          }}
+        >
           Reset
         </button>
       </div>

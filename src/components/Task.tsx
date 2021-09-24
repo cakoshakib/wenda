@@ -116,7 +116,14 @@ const Task = ({ task, index, day, d, handleDelete }: TaskProps) => {
   return (
     <form className="task_item">
       <table>
-        <tr>
+        <tr
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleOnChange();
+            }
+          }}
+        >
           <td id="checkboxTd">
             <input
               id={task}
