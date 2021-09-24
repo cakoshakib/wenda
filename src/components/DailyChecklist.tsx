@@ -5,24 +5,23 @@ import styles from '../styles/DailyChecklist.css';
 import Tasks from './TaskList';
 
 const days = [
-  'Sunday',
   'Monday',
   'Tuesday',
   'Wednesday',
   'Thursday',
   'Friday',
   'Saturday',
+  'Sunday',
 ];
 
 interface Checklist {
   day: string;
+  lastSunday: Date;
 }
 
-const DailyChecklist = ({ day }: Checklist) => {
+const DailyChecklist = ({ day, lastSunday }: Checklist) => {
   const [deleting, setDeleting] = useState<boolean>(false);
 
-  const d = new Date();
-  const lastSunday = new Date(d.setDate(d.getDate() - d.getDay()));
   const thisDay = new Date(
     lastSunday.setDate(lastSunday.getDate() + days.indexOf(day))
   );
