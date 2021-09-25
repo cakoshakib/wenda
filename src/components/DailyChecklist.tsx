@@ -22,7 +22,7 @@ const DailyChecklist = ({ day, lastSunday }: Checklist) => {
   const [deleting, setDeleting] = useState<boolean>(false);
 
   const thisDay = new Date(
-    lastSunday.setDate(lastSunday.getDate() + days.indexOf(day))
+    new Date().setDate(lastSunday.getDate() + days.indexOf(day))
   );
 
   const handleClick = () => {
