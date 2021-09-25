@@ -2,7 +2,7 @@ import Store from 'electron-store';
 import { Note } from '../types';
 
 const d = new Date();
-const lastSunday = new Date(d.setDate(d.getDate() - d.getDay()));
+const lastSunday = new Date(d.setDate(d.getDate() - d.getDay() + 1));
 const weekTitle = `Week of ${new Intl.DateTimeFormat('en-US', {
   month: 'long',
 }).format(lastSunday)} ${lastSunday.getDate()}, ${lastSunday.getFullYear()}`;
