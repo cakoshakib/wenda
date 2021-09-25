@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
-import styles from '../styles/DailyChecklist.css';
 import Tasks from './TaskList';
 
 const days = [
@@ -31,23 +30,15 @@ const DailyChecklist = ({ day, lastSunday }: Checklist) => {
   };
 
   return (
-    <div id={styles.dayModule}>
+    <div id="dayModule">
       {deleting ? (
-        <MdExpandLess
-          size="50"
-          id={styles.expandButton}
-          onClick={handleClick}
-        />
+        <MdExpandLess size="50" id="expandButton" onClick={handleClick} />
       ) : (
-        <MdExpandMore
-          size="50"
-          id={styles.expandButton}
-          onClick={handleClick}
-        />
+        <MdExpandMore size="50" id="expandButton" onClick={handleClick} />
       )}
-      <h3 id={styles.dayHeader}>
+      <h3 id="dayHeader">
         {day}
-        <span id={styles.dateNum}>{thisDay.getDate()}</span>
+        <span id="dateNum">{thisDay.getDate()}</span>
       </h3>
       <Tasks day={day} deleting={deleting} />
     </div>

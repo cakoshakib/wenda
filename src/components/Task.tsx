@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import noteService from '../services/notes';
-import styles from '../styles/Task.css';
 
 interface TaskProps {
   task: string;
@@ -26,11 +25,11 @@ const TaskInfo = ({
   const [val, setVal] = useState<string>(task);
 
   return (
-    <td id={styles.taskTd}>
+    <td id="taskTd">
       {toggle ? (
         <label
           htmlFor={task}
-          className={styles.taskText}
+          className="taskText"
           onDoubleClick={() => setToggle(false)}
           style={strikeThrough}
         >
@@ -40,7 +39,7 @@ const TaskInfo = ({
         <input
           name="edit_task"
           type="text"
-          className={styles.editTask}
+          className="editTask"
           value={val}
           onChange={(event) => {
             const content = event.target.value;
@@ -69,12 +68,8 @@ const DeleteButton = ({
   index: number;
   dStyle: React.CSSProperties;
 }) => (
-  <td id={styles.deleteTd} style={dStyle}>
-    <MdClose
-      size="35"
-      id={styles.deleteButton}
-      onClick={() => handleDelete(index)}
-    />
+  <td id="deleteTd" style={dStyle}>
+    <MdClose size="35" id="deleteButton" onClick={() => handleDelete(index)} />
   </td>
 );
 
@@ -117,12 +112,12 @@ const Task = ({ task, index, day, d, handleDelete }: TaskProps) => {
     <form className="task_item">
       <table>
         <tr
-          tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               handleOnChange();
             }
           }}
+          id="taskRow"
         >
           <td id="checkboxTd">
             <input

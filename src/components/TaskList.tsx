@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Task from './Task';
-import styles from '../styles/TaskList.css';
 import noteService from '../services/notes';
 
 interface TaskList {
@@ -33,9 +32,9 @@ const Tasks = ({ day, deleting }: TaskList) => {
   };
 
   return (
-    <div id={styles.tasks}>
+    <div id="tasks">
       {tasks.map((task, index) => (
-        <div key={uuidv4()} id={styles.oneTask}>
+        <div key={uuidv4()} id="oneTask">
           <Task
             key={uuidv4()}
             task={task}
