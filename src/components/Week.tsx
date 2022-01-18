@@ -2,6 +2,18 @@ import React, { useState, useEffect } from 'react';
 import DailyChecklist from './DailyChecklist';
 import noteService from '../services/notes';
 
+const CurrentButton = ({ handleReset }: { handleReset: () => void }) => (
+  <button
+    type="button"
+    onClick={handleReset}
+    onKeyDown={(e) => {
+      if (e.key === 'ArrowDown' || e.key === 'Enter') handleReset();
+    }}
+  >
+    Current
+  </button>
+);
+
 const Week = () => {
   const [currentDay, setCurrentDay] = useState<Date>(new Date());
   const lastSunday = new Date(
@@ -69,15 +81,7 @@ const Week = () => {
         </span>
       </div>
       <div id="archiveButton">
-        <button
-          type="button"
-          onClick={handleReset}
-          onKeyDown={(e) => {
-            if (e.key === 'ArrowDown' || e.key === 'Enter') handleReset();
-          }}
-        >
-          Reset
-        </button>
+        <CurrentButton handleReset={handleReset} />
       </div>
       <div id="daysContainer">
         <DailyChecklist day="Monday" lastSunday={lastSunday} />
