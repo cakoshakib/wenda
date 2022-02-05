@@ -13,11 +13,13 @@ interface TaskProps {
 const TaskInfo = ({
   strikeThrough,
   task,
+  taskId,
   day,
   index,
 }: {
   strikeThrough: React.CSSProperties;
   task: string;
+  taskId: string;
   day: string;
   index: number;
 }) => {
@@ -28,7 +30,7 @@ const TaskInfo = ({
     <td id="taskTd">
       {toggle ? (
         <label
-          htmlFor={task}
+          htmlFor={taskId}
           className="taskText"
           onDoubleClick={() => setToggle(false)}
           style={strikeThrough}
@@ -76,6 +78,9 @@ const DeleteButton = ({
 const Task = ({ task, index, day, d, handleDelete }: TaskProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
+  // A simple "hash" to locate the precise task id when clicking label
+  const taskId: string = task + day + index;
+
   useEffect(() => {
     const savedData = noteService.getDay(day) || [];
     const state = savedData[index].checked;
@@ -121,7 +126,7 @@ const Task = ({ task, index, day, d, handleDelete }: TaskProps) => {
         >
           <td id="checkboxTd">
             <input
-              id={task}
+              id={taskId}
               type="checkbox"
               checked={isChecked}
               onChange={handleOnChange}
@@ -130,6 +135,7 @@ const Task = ({ task, index, day, d, handleDelete }: TaskProps) => {
           <TaskInfo
             strikeThrough={strikeThrough}
             task={task}
+            taskId={taskId}
             day={day}
             index={index}
           />
